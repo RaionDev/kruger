@@ -18,3 +18,33 @@ Tu puedes visualizar cualquier error en la consola.
 
 Compila la aplicación para producción a la carpeta `build`.\
 React empaqueta correctamente en modo de producción y optimiza la compilación para un mejor rendimiento.
+
+## Resumen
+
+La aplicación contiene 2 roles: Administrador y Empleado.\
+
+### 1. Administrador
+
+El Administrador puede: Registar, editar, listar y eliminar a los empleados.\
+
+a. Registra la siguiente información del empleadop:
+
+- Cédula.\
+- Nombre.\
+- Apellidos.\
+- Correo Electrónico.
+
+b. Al dar de alta un empleado genera un usuario y contraseña para el empleado
+
+c. Como Administrador se puede filtar el listado de los empleados por los siguientes criterios.
+
+Criterios:
+- Estado de vacunación.\
+- Tipo de vacuna.\
+- Rango de fecha de vacunación
+
+### 2. Empleado
+
+
+
+
