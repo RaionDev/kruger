@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './pages/Home';
+import Administrador from './pages/Administrador';
+import Empleado from './pages/Empleado';
+import DataProvider from './components/Provider';
 
 function App() {
+  let component
+  switch (window.location.pathname) {
+    case "/":
+      component = <Home />
+      break;
+    case "/Administrador":
+      component = <Administrador />
+      break;
+
+    case "/Empleado":
+      component = <Empleado />
+      break;
+    default:
+      component = <Home />
+      break;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataProvider>
+      <div className="App">
+        {component}
+      </div>
+    </DataProvider>
   );
 }
 

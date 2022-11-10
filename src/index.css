@@ -1,13 +1,85 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+  .div-profile {
+    @apply w-2/5 rounded border-2 border-gray-600 
+  }
+
+  .div-title{
+    @apply flex w-1/12 border-[1px] bg-gray-200 font-semibold
+  }
+
+  .div-title2{
+    @apply flex w-2/12 border-[1px] bg-gray-200 font-semibold
+  
+  }
+
+  .div-data{
+    @apply flex w-1/12 border-[1px] overflow-auto
+  }
+  .div-data2{
+    @apply flex w-2/12 border-[1px] overflow-auto
+  }
+  .button-add{
+    @apply absolute bottom-10 right-10 rounded-full bg-orange-500 p-5 hover:p-7
+  }
+
+  .button-filter{
+    @apply absolute bottom-40 right-10 rounded-full bg-gray-600 p-5 hover:p-7
+  }
+
+  .button-save{
+    @apply  bg-orange-400 p-3 rounded 
+  }
+  .button-cancel{
+    @apply  p-3 rounded border-[1px] border-gray-500 mr-2 w-[80px]
+  }
+
+  .button-signin{
+    @apply  bg-blue-600 p-3 rounded w-[150px] mt-14
+  }
+
+  .text-input{
+    @apply  font-semibold p-3 border-gray-300 border-[1px] rounded 
+  }
+
+  .text-inputTitle{
+    @apply  font-semibold text-gray-600 ml-2
+  }
+
+  .modal1{
+    @apply bg-white flex flex-col h-4/6 m-20 p-7 border-2 lg:w-[700px] lg:translate-x-1/2
+  }
+
+  .text-titleModal{
+    @apply font-bold text-center text-[25px]
+  }
+
+  .text-title{
+    @apply font-bold text-center text-[35px] mt-5 mb-5
+  }
+
+  .div-profileData{
+    @apply flex flex-row items-center w-full p-3
+  }
+  .button-update{
+    @apply bg-blue-900 p-3 rounded w-[150px] flex flex-row justify-around items-center
+  }
+  .button-logout{
+    @apply border-2 p-3 rounded w-[150px] flex flex-row justify-around items-center mt-5
+  }
+  .div-profileTitle{
+    @apply flex flex-row items-center justify-start w-[150px] 
+  }
+  .div-nav{
+    @apply flex flex-row bg-gray-700 w-full 
+  }
+  .text-nav{
+    @apply text-white font-semibold p-5 text-[18px] hover:text-[21px]
+  }
+  .div-filter{
+    @apply flex flex-row justify-around items-center p-3
+  }
 }
