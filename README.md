@@ -64,7 +64,7 @@ El empleado puede ingresar al sistema para visualizar y actualizar la informaci�
 
 ## Desarrollo
 
-Se utilizó la librería de React para desarrollar el proyecto,  Tailwind como Framework CSS para estilizar el proyecto. Para la persistencia de datos se utilizó el web storage.
+Se utilizó la librería de React v18.2 para desarrollar el proyecto,  Tailwind v3.2 como Framework CSS para estilizar el proyecto. Para la persistencia de datos se utilizó el web storage.
 
  Se decidió construir el proyecto en 3 páginas principales.
  - Home.js
