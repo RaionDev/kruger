@@ -1,22 +1,23 @@
+import { Link } from "react-router-dom"
 
 const NavTab = () => {
     return (
         <div className="div-nav">
-            <a href="/">
+            <Link to="/">
                 <p className="text-nav">
                     Home
                 </p>
-            </a>
-            <a href="/Administrador">
+            </Link>
+            <Link to="/Administrador">
                 <p className="text-nav">
                     Admin
                 </p>
-            </a>
-            <a href="/Empleado">
+            </Link>
+            <Link to="/Empleado">
                 <p className="text-nav">
                     Employee
                 </p>
-            </a>
+            </Link>
         </div>
     )
 }

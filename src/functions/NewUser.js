@@ -11,7 +11,11 @@ function NewUser (name = "", lastName = "", idcard = "", email = "") {
         phone: "",
         address: "",
         vaccinated: false,
-        birthday: null
+        birthday: null,
+        date:null,
+        type:"",
+        dose:""
+
 
     }
 

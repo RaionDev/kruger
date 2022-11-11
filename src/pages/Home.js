@@ -1,41 +1,43 @@
 import React from 'react'
 import employee from "../images/empleado.jpg"
 import admin from "../images/admin.png"
+import { Link } from 'react-router-dom'
+import NavTab from '../components/NavTab'
 
 const Home = () => {
   return (
     <div>
-      <h1>
-        Escoge el Modo
+      <NavTab />
+
+      <h1 className='text-title'>
+        Choose a mode
       </h1>
       <div className='w-full flex flex-row justify-around'>
 
         <div className='div-profile'>
 
-          <a
-            href='/Administrador'
+          <Link to='/Administrador'
           >
-            <p className='text-left font-semibold'>
+            <p className='text-left font-semibold text-[30px] p-3'>
               Admin
             </p>
             <img
+              alt='Admin Option'
               src={admin}
             />
-          </a>
+          </Link>
         </div>
 
         <div className='div-profile'>
-          <a
-            href='/Empleado'
-
-          >
-            <p className='text-left font-semibold'>
+          <Link to='/Empleado' >
+          <p className='text-left font-semibold text-[30px] p-3'>
               Employee
             </p>
             <img
+              alt='Employee Option'
               src={employee}
             />
-          </a>
+          </Link>
         </div>
       </div>
 

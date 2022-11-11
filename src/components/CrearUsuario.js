@@ -13,7 +13,6 @@ const CrearUsuario = () => {
 
     return (
         <div className='flex flex-col h-full justify-around'>
-            <Toaster />
             <div>
                 <h1 className='text-titleModal'>
                     Create Account
@@ -85,9 +84,10 @@ const CrearUsuario = () => {
 
                 <button
                     className='button-save'
-                    onClick={async() => {
-                        const result = await NewUser(name, lastName, idcard, email)
-                        if (result.type === "succes") {
+                    onClick={() => {
+                        const result =  NewUser(name, lastName, idcard, email)
+                        if (result.type === "success") {
+                            setModal1(false)
                             toast.success("User saved")
                         } else {
                             toast.error(result.message)

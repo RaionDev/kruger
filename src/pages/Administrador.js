@@ -7,17 +7,23 @@ import { AppContex } from '../components/Provider';
 import NavTab from '../components/NavTab';
 import moment from 'moment';
 import ReactDatePicker from 'react-datepicker';
-import { AiOutlineClose } from "react-icons/ai"
+import { AiOutlineClose, AiOutlineEdit } from "react-icons/ai"
+import UserEdit from '../components/UserEdit';
+import { Toaster } from 'react-hot-toast';
 
 const Administrador = () => {
     const [modal2, setModal2] = useState(false)
 
     const [list, setList] = useState([])
-    const { modal1, setModal1 } = useContext(AppContex);
+    const { modal1, setModal1, modal3, setModal3 } = useContext(AppContex);
     const [fV, setFV] = useState("all")
     const [rD, setRD] = useState(false)
     const [d1, setD1] = useState(new Date())
     const [d2, setD2] = useState(new Date())
+    const [type, setType] = useState("all")
+
+
+    const [userE, setUserE] = useState(null)
 
 
     const [flag, setFlag] = useState(0)
@@ -26,8 +32,14 @@ const Administrador = () => {
         let filtro = []
         switch (fV) {
             case "Yes":
-                filtro = saved.filter((item) => item.vaccinated === true)
-                setList(filtro)
+                if (type !== "all") {
+                    filtro = saved.filter((item) => item.type === type)
+                    setList(filtro)
+                } else {
+                    filtro = saved.filter((item) => item.vaccinated === true)
+                    setList(filtro)
+                }
+
                 let filtro2 = []
                 if (rD) {
                     const date1 = moment((d1)).format("x")
@@ -56,10 +68,11 @@ const Administrador = () => {
     useEffect(() => {
         const saved = getDatabase()
         Filtro(saved)
-    }, [modal1, flag])
+    }, [modal1, flag, modal3])
 
     return (
         <div className='flex flex-col relative h-screen items-center w-screen' >
+            <Toaster />
             <NavTab />
             <button className='button-add'
                 onClick={() => setModal1(true)}>
@@ -86,6 +99,9 @@ const Administrador = () => {
                         <AiOutlineClose size={20} />
                     </button>
                     <div>
+                        <p className='text-[30px] font-semibold text-center'>
+                            Filters
+                        </p>
                         <div className='div-filter mt-5'>
                             <p>
                                 Vaccinated
@@ -128,37 +144,102 @@ const Administrador = () => {
                             </div>
                         </div>
                         {fV === "Yes" ?
-                            <div className='div-filter'>
-                                <div className='flex flex-row'>
-                                    <input
-                                        checked={rD}
-                                        type={'checkbox'}
-                                        onChange={(e) => {
-                                            setRD(!rD)
-                                        }}
-                                    />
-                                    <p>
-                                        Date Range
-                                    </p>
+                            <div>
+                                <div className='div-filter'>
+                                    <div className='flex flex-row'>
+                                        <input
+                                            checked={rD}
+                                            type={'checkbox'}
+                                            onChange={(e) => {
+                                                setRD(!rD)
+                                            }}
+                                        />
+                                        <p className='ml-5'>
+                                            Date Range
+                                        </p>
+                                    </div>
+                                    <div className='w-1/4'>
+                                        <ReactDatePicker
+                                            maxDate={d2}
+                                            dateFormat={"dd/MM/yyyy"}
+                                            selected={d1}
+                                            onChange={(date) => {
+                                                setD1(date)
+                                            }} />
+                                    </div>
+                                    <div className='w-1/4'>
+                                        <ReactDatePicker
+                                            minDate={d1}
+                                            maxDate={new Date()}
+                                            dateFormat={"dd/MM/yyyy"}
+                                            selected={d2}
+                                            onChange={(date) => {
+                                                setD2(date)
+                                            }} />
+                                    </div>
                                 </div>
-                                <div className='w-1/4'>
-                                    <ReactDatePicker
-                                        maxDate={d2}
-                                        dateFormat={"dd/MM/yyyy"}
-                                        selected={d1}
-                                        onChange={(date) => {
-                                            setD1(date)
-                                        }} />
-                                </div>
-                                <div className='w-1/4'>
-                                    <ReactDatePicker
-                                        minDate={d1}
-                                        maxDate={new Date()}
-                                        dateFormat={"dd/MM/yyyy"}
-                                        selected={d2}
-                                        onChange={(date) => {
-                                            setD2(date)
-                                        }} />
+
+                                <div className='div-filter mt-5'>
+                                    <div>
+                                        <input
+                                            value={"Sputnik"}
+                                            type={'radio'}
+                                            onChange={(e) => setType(e.target.value)}
+                                            checked={type === "Sputnik"}
+                                        />
+                                        <p>
+                                            Sputnik
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <input
+                                            value={"AstraZeneca"}
+                                            type={'radio'}
+                                            onChange={(e) => setType(e.target.value)}
+                                            checked={type === "AstraZeneca"}
+                                        />
+                                        <p>
+                                            AstraZeneca
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <input
+                                            value={"Pfizer"}
+                                            type={'radio'}
+                                            onChange={(e) => setType(e.target.value)}
+                                            checked={type === "Pfizer"}
+
+                                        />
+                                        <p>
+                                            Pfizer
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <input
+                                            value={"Jhonson&Jhonson"}
+                                            type={'radio'}
+                                            onChange={(e) => setType(e.target.value)}
+                                            checked={type === "Jhonson&Jhonson"}
+
+                                        />
+                                        <p>
+                                            Jhonson&Jhonson
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <input
+                                            value={"all"}
+                                            type={'radio'}
+                                            onChange={(e) => setType(e.target.value)}
+                                            checked={type === "all"}
+
+                                        />
+                                        <p>
+                                            All
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             : null
@@ -187,6 +268,16 @@ const Administrador = () => {
             >
                 <CrearUsuario />
             </Modal>
+
+            <Modal
+                className={"modal1 overflow-y-auto h-5/6"}
+                isOpen={modal3 ?? false}
+                onRequestClose={() => setModal3(false)}
+                ariaHideApp={false}
+            >
+                <UserEdit data={userE} />
+            </Modal>
+
             <h1 className='text-title '>
                 Users
             </h1>
@@ -216,6 +307,9 @@ const Administrador = () => {
                 <p className='div-title2 lg:div-title'>
                     Vaccinated
                 </p>
+                <div className='w-[30px]'>
+
+                </div>
 
             </div>
             {list.length > 0 ?
@@ -240,18 +334,27 @@ const Administrador = () => {
                             {item.address}
                         </p>
                         <p className='div-data'>
-                            {item.birthday !== null ? moment(Number(item.birthday)).format("DD/MM/yyyy") : null}
+                            {item.birthday !== null && item.birthday !== "" ? moment(Number(item.birthday)).format("DD/MM/yyyy") : null}
                         </p>
                         <p className='div-data2 lg:div-data'>
                             {item?.vaccinated === true ? `${item.type} dose ${item.dose} date ${moment(Number(item.date)).format("DD/MM/YYYY")}` : "No"}
                         </p>
+                        <button className='w-[30px] items-center flex justify-center'
+                            onClick={() => {
+                                setUserE(item)
+                                setModal3(true)
+                            }}>
+                            <AiOutlineEdit />
+                        </button>
                     </div>
                 )
-                : <div className='border-[1px] w-11/12 lg:w-9/12'>
-                    <p className='p-8 font-semibold text-[22px] text-gray-500'>
-                        No Users
-                    </p>
-                </div>
+                : <>
+                    <div className=' w-11/12 lg:w-9/12 justify-center flex flex-row '>
+                        <p className=' p-8 font-semibold text-[22px] text-gray-500 text-center'>
+                            No Users
+                        </p>
+                    </div>
+                </>
             }
 
         </div>

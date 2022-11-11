@@ -3,29 +3,19 @@ import Home from './pages/Home';
 import Administrador from './pages/Administrador';
 import Empleado from './pages/Empleado';
 import DataProvider from './components/Provider';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
-  let component
-  switch (window.location.pathname) {
-    case "/":
-      component = <Home />
-      break;
-    case "/Administrador":
-      component = <Administrador />
-      break;
 
-    case "/Empleado":
-      component = <Empleado />
-      break;
-    default:
-      component = <Home />
-      break;
-  }
   return (
     <DataProvider>
-      <div className="App">
-        {component}
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' exact element={<Home/>} />
+          <Route path='/Administrador' element={<Administrador/>} />
+          <Route path='/Empleado' element={<Empleado/>} />
+        </Routes>
+      </BrowserRouter>
     </DataProvider>
   );
 }

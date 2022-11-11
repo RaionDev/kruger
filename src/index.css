@@ -4,7 +4,7 @@
 
 @layer components {
   .div-profile {
-    @apply w-2/5 rounded border-2 border-gray-600 
+    @apply w-2/5 rounded border-2 border-gray-600 mt-10
   }
 
   .div-title{
@@ -46,7 +46,7 @@
   }
 
   .text-inputTitle{
-    @apply  font-semibold text-gray-600 ml-2
+    @apply  font-semibold text-gray-600 ml-2 mt-3
   }
 
   .modal1{
@@ -62,7 +62,7 @@
   }
 
   .div-profileData{
-    @apply flex flex-row items-center w-full p-3
+    @apply flex flex-row items-center w-full p-2
   }
   .button-update{
     @apply bg-blue-900 p-3 rounded w-[150px] flex flex-row justify-around items-center

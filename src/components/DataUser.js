@@ -11,7 +11,7 @@ import { MdOutlinePlace } from "react-icons/md"
 import { TbVaccine, TbVaccineBottle } from "react-icons/tb"
 import { GiOverdose } from "react-icons/gi"
 import { BsCalendarDate } from "react-icons/bs"
-import toast, { Toaster } from 'react-hot-toast';
+import toast,{Toaster}from 'react-hot-toast';
 import moment from 'moment';
 
 const DataUser = () => {
@@ -19,17 +19,17 @@ const DataUser = () => {
     const [address, setAddress] = useState(state.address)
     const [phone, setPhone] = useState(state.phone)
     const [vaccinated, setVaccinated] = useState(state.vaccinated)
-    const [birthday, setBirthday] = useState(state.birthday !== "" || state.birthday !== null ? new Date(Number(state.birthday)) : new Date())
+    const [birthday, setBirthday] = useState(state.birthday !== "" && state.birthday !== null ? new Date(Number(state.birthday)) : new Date())
     const [dose, setDose] = useState(state.dose)
     const [type, setType] = useState(state.type)
-    const [date, setDate] = useState(state.date !== "" || state.date !== null ? new Date(Number(state.date)) : new Date())
+    const [date, setDate] = useState(state.date !== "" && state.date !== null ? new Date(Number(state.date)) : new Date())
 
 
     const options = [
         { value: 'Sputnik', label: 'Sputnik' },
         { value: 'AstraZeneca', label: 'AstraZeneca' },
         { value: 'Pfizer', label: 'Pfizer' },
-        { value: 'Jhonson&Jonhson', label: 'Jhonson&Jonhson' }
+        { value: 'Jhonson&Jhonson', label: 'Jhonson&Jhonson' }
     ]
 
     const doses = [
@@ -45,7 +45,8 @@ const DataUser = () => {
 
     return (
         <div className='flex flex-col items-center w-screen'>
-            <Toaster />
+
+            <Toaster/>
             <h1 className="text-title">
                 {state.name + " " + state.lastName}
             </h1>
@@ -215,9 +216,9 @@ const DataUser = () => {
                         let result
                         if (vaccinated === true) {
                             const vdate = moment(date).format("x")
-                            result = UpdateData(state.idcard, phone, address, bdate, vaccinated, dose, type, vdate)
+                            result = UpdateData(state.idcard,state.name,state.lastName,state.email, phone, address, bdate, vaccinated, dose, type, vdate)
                         } else {
-                            result = UpdateData(state.idcard, phone, address, bdate)
+                            result = UpdateData(state.idcard,state.name,state.lastName,state.email, phone, address, bdate)
 
                         }
                         if (result.type === "succes") {
