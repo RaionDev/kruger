@@ -29,21 +29,29 @@ El Administrador puede: Registar, editar, listar y eliminar a los empleados.\
 
 a. Registra la siguiente información del empleadop:
 
-- Cédula.\
-- Nombre.\
-- Apellidos.\
+- Cédula.
+- Nombre.
+- Apellidos.
 - Correo Electrónico.
 
 b. Al dar de alta un empleado genera un usuario y contraseña para el empleado
 
-c. Como Administrador se puede filtar el listado de los empleados por los siguientes criterios.
+c. Como Administrador se puede filtar el listado de los empleados por los siguientes criterios:
 
-Criterios:
-- Estado de vacunación.\
-- Tipo de vacuna.\
+- Estado de vacunación.
+- Tipo de vacuna.
 - Rango de fecha de vacunación
 
 ### 2. Empleado
+
+El empleado puede ingresar al sistema para visualizar y actualizar la información.
+
+- Fecha de nacimiento.
+- Dirección de domicilio.
+- Teléfono móvil.
+- Estado de vaciación. Vacunado / No vacunado
+- Si el empleado está vacunado, se solicita que ingrese tipo de vacuna, Fecha y Número de dosis.
+
 
 
 
