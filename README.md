@@ -2,6 +2,15 @@
 
 Kruger Corporación requiere una aplicación para llevar un registro del inventario del estado de vacunación de los empleados
 
+## Descargar Proyecto
+
+1. Copiar la siguiente URL : https://github.com/raionplay/kruger.git
+
+2. En la ubicación que deseamos copiar el proyecto. en la consola de CMD colocamos el siguiente comando:
+`git clone https://github.com/raionplay/kruger.git`
+
+3. Instalar los módulos del proyecto con el comando: `yarn install`
+
 ## Scripts disponibles:
 
 En el directoria del proyecto, tu puedes ejecutar los siguientes comandos:
@@ -18,6 +27,7 @@ Tu puedes visualizar cualquier error en la consola.
 
 Compila la aplicación para producción a la carpeta `build`.\
 React empaqueta correctamente en modo de producción y optimiza la compilación para un mejor rendimiento.
+
 
 ## Resumen
 
